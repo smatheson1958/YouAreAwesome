@@ -8,43 +8,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var message: String = ""
+    @State private var message: [String] = ["You are Awesome","You are Greate","Message3","Message4"]
     @State private var imageName: String = ""
+    @State private var imageNumber = 0
+    @State private var messageNumber = 0
+  
     var body: some View {
         
         VStack {
             Spacer()
-            Image(systemName: imageName)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.orange)
-            Text(message)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(radius: 30)
+          
+            Text(message[messageNumber])
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
-                .foregroundStyle(.black)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
             Spacer()
-            
       
-            Button("Press Me!") {
-                let message1 = "You are Awesome"
-                let message2 = "You are Greate"
-                let imageString1 = "sun.max.fill"
-                let imageString2 = "hand.thumbsup"
+            Button("show Messge!") {
+
+                imageNumber += 1
+                imageName = "image\(imageNumber)"
                 
-                message = (message == message1 ? message2:  message1)
-                imageName = (message == message1 ? imageString2:  imageString1)
+                if (imageNumber>9) {
+                    imageNumber = 0
+                }
                 
-//                if(message == message1){
-//                    message = message2
-//                    imageName = imageString2
-//                }else{
-//                    message=message1
-//                    imageName = imageString1
-//                }
+                messageNumber += 1
+                print(messageNumber)
+                if messageNumber == message.count{
+                  messageNumber = 0
+                    print ("message number ot large ")
+                }
+                
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
-            .tint(.orange)
             
         }
         .padding()
