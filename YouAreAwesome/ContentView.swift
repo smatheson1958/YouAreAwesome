@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var message: [String] = ["You are Awesome","You are Greate","Message3","Message4"]
+    @State private var message: [String] = ["You are Awesome this is a long very long message","You are Greate","Message3","Message4"]
     @State private var imageName: String = ""
     @State private var imageNumber = 0
     @State private var messageNumber = 0
@@ -16,17 +16,26 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Spacer()
+            
+            
+            Text(message[messageNumber])
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 100)
+                .animation(.easeInOut(duration: 0.15), value: messageNumber)
+                
+          
+           
             Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .shadow(radius: 30)
+                .animation(.default, value: imageName)
           
-            Text(message[messageNumber])
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(.red)
             Spacer()
       
             Button("show Messge!") {
