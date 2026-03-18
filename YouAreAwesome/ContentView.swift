@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var message: [String] = ["You are Awesome this is a long very long message","You are Greate","Message3","Message4"]
+
     @State private var imageName: String = ""
     @State private var imageNumber = 0
     @State private var messageNumber = 0
@@ -39,21 +39,15 @@ struct ContentView: View {
             Spacer()
       
             Button("show Messge!") {
+                
+               let messages: [String] = ["You are Awesome this is a long very long message",
+                                        "You are Greate",
+                                        "Message3",
+                                        "Message4"]
 
-                imageNumber += 1
-                imageName = "image\(imageNumber)"
+                message = messages[Int.random(in: 0...messages.couny-1)]
                 
-                if (imageNumber>9) {
-                    imageNumber = 0
-                }
-                
-                messageNumber += 1
-                print(messageNumber)
-                if messageNumber == message.count{
-                  messageNumber = 0
-                    print ("message number ot large ")
-                }
-                
+                imageName = : image\(Int.random(in: 0...9))
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
